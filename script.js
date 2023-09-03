@@ -1,5 +1,5 @@
-function getComputerChoice(){
-    let choice = Math.floor(Math.random() * 3 + 1);
+function getComputerChoice(){ //Random number [1, 3] for computer selection.
+    let choice = Math.floor(Math.random() * 3 + 1); 
     if (choice === 1){
         return "rock";
     }
@@ -10,21 +10,21 @@ function getComputerChoice(){
         return "scissors";
     }
 }
-// let computerSelection = getComputerChoice();
-// let playerSelection = "rock";
-function round(playerSelection, computerSelection){
+
+function playRound(playerSelection, computerSelection){ 
+    //If player wins - returns 1, if loses - returns 2, if draw - 3. For printing right messages in outMessages().
     if (playerSelection == computerSelection){
         return 3;
     }
     else if (playerSelection == "rock" && computerSelection == "scissors" ||
-    (playerSelection == "paper" && computerSelection == "rock") ||
-    (playerSelection == "scissors" && computerSelection == "paper")){
+            (playerSelection == "paper" && computerSelection == "rock") ||
+            (playerSelection == "scissors" && computerSelection == "paper")){
         return 1;
     } else return 2;
 }
 
-function messages(playerSelection, computerSelection){
-    let roundResult = round(playerSelection, computerSelection);
+function outMessages(playerSelection, computerSelection){
+    let roundResult = playRound(playerSelection, computerSelection);
     let message = "";
     switch(roundResult){
         case 1:
@@ -39,24 +39,21 @@ function messages(playerSelection, computerSelection){
     }
     return message;
 }
-// console.log("player: " + playerSelection)
-// console.log("computer: " + computerSelection)
-// console.log(messages(playerSelection, computerSelection, roundResult));
 
-function game(){
+function game(){ 
     let playerScore = 0;
     let computerScore = 0;
     for (let i = 0; i < 5; i++){
         let computerSelection = getComputerChoice();
-        let weapon = prompt("Write in your weapon");
-        playerSelection = weapon.toLowerCase();
-        if (round(playerSelection, computerSelection) == 1){
+        let playerWeapon = prompt("Write in your weapon");
+        playerSelection = playerWeapon.toLowerCase();
+        if (playRound(playerSelection, computerSelection) == 1){
             playerScore++;
         }
-        if (round(playerSelection, computerSelection) == 2){
+        if (playRound(playerSelection, computerSelection) == 2){
             computerScore++;
         }
-        console.log(messages(playerSelection, computerSelection));
+        console.log(outMessages(playerSelection, computerSelection));
         console.log("player - " + playerScore + " computer - " + computerScore);
     }
     if (playerScore > computerScore){
