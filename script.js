@@ -44,11 +44,29 @@ function messages(playerSelection, computerSelection){
 // console.log(messages(playerSelection, computerSelection, roundResult));
 
 function game(){
+    let playerScore = 0;
+    let computerScore = 0;
     for (let i = 0; i < 5; i++){
         let computerSelection = getComputerChoice();
-        let playerSelection = prompt("Write in your weapon");
-        // let playerSelection = sign.toLowerCase();
+        let weapon = prompt("Write in your weapon");
+        playerSelection = weapon.toLowerCase();
+        if (round(playerSelection, computerSelection) == 1){
+            playerScore++;
+        }
+        if (round(playerSelection, computerSelection) == 2){
+            computerScore++;
+        }
         console.log(messages(playerSelection, computerSelection));
+        console.log("player - " + playerScore + " computer - " + computerScore);
+    }
+    if (playerScore > computerScore){
+        console.log("You won the whole game genius");
+    }
+    else if (playerScore < computerScore) {
+        console.log("You lost to the computer bruh");
+    }
+    else if (playerScore == computerScore){
+        console.log("You r as smart as this machine");
     }
 }
 game();
