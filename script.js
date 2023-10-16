@@ -1,6 +1,20 @@
+const playerWeaponRock = document.querySelector('.rock');
+const playerWeaponPaper = document.querySelector('.paper');
+const playerWeaponScissors = document.querySelector('.scissors');
+const scorePlayer = document.querySelector('.score1');
+const scoreComputer = document.querySelector('.score2');
+const computerHand = document.querySelector('.computerHands')
+let countPlayer = 0;
+let countComputer = 0;
+
 function getComputerChoice(){ //Random number [1, 3] for computer selection.
     let choice = Math.floor(Math.random() * 3 + 1); 
     if (choice === 1){
+        // const cHand = document.createElement('img');
+        // cHand.classList.add('hand');
+        // cHand.classList.add('top');
+        // document.getElementByClassName('hand').src = "pics/камень.png";
+        // computerHand.appendChild(cHand);
         return "rock";
     }
     if (choice === 2){
@@ -40,30 +54,34 @@ function outMessages(playerSelection, computerSelection){
     return message;
 }
 
-function game(){ 
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++){
-        let computerSelection = getComputerChoice();
-        let playerWeapon = prompt("Write in your weapon");
-        playerSelection = playerWeapon.toLowerCase();
-        if (playRound(playerSelection, computerSelection) == 1){
-            playerScore++;
-        }
-        if (playRound(playerSelection, computerSelection) == 2){
-            computerScore++;
-        }
-        console.log(outMessages(playerSelection, computerSelection));
-        console.log("player - " + playerScore + " computer - " + computerScore);
+function score(playerSelection, computerSelection){
+    let roundResult = playRound(playerSelection, computerSelection);
+    if (roundResult == 1){
+        countPlayer++;
+        scorePlayer.textContent = countPlayer;
+        scorePlayer.classList.add('text');
+        return;
     }
-    if (playerScore > computerScore){
-        console.log("You won the whole game genius");
-    }
-    else if (playerScore < computerScore) {
-        console.log("You lost to the computer bruh");
-    }
-    else if (playerScore == computerScore){
-        console.log("You r as smart as this machine");
+    if (roundResult == 2){
+        countComputer++;
+        scoreComputer.textContent = countComputer;
+        scoreComputer.classList.add('text');
+        return;
     }
 }
-game();
+
+playerWeaponRock.addEventListener('click', () => {
+    let computerChoice = getComputerChoice();
+    score("rock", computerChoice);
+    console.log(outMessages("rock", computerChoice));
+});
+playerWeaponScissors.addEventListener('click', () => {
+    let computerChoice = getComputerChoice();
+    score("scissors", computerChoice);
+    console.log(outMessages("scissors", computerChoice));
+});
+playerWeaponPaper.addEventListener('click', () => {
+    let computerChoice = getComputerChoice();
+    score("paper", computerChoice);
+    console.log(outMessages("paper", computerChoice));
+});
