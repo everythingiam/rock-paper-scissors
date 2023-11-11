@@ -76,20 +76,18 @@ function score(playerSelection, computerSelection){
     if (countComputer == 5){
         scoreComputer.textContent = "WIN";
         scorePlayer.textContent = "LOSE";
-        return;
     }
     if (countPlayer == 5){
         scoreComputer.textContent = "LOSE";
         scorePlayer.textContent = "WIN";
-        return;
     }
 }
 
 playerWeaponRock.addEventListener('click', () => {
     let computerChoice = getComputerChoice();
-    // if (scoreComputer || scorePlayer == 5){
-    //     return;
-    // }
+    if (scoreComputer || scorePlayer == 5){
+        return;
+    }
     score("rock", computerChoice);
     showComputerChoice(computerChoice);
     console.log(outMessages("rock", computerChoice));
@@ -97,9 +95,9 @@ playerWeaponRock.addEventListener('click', () => {
 });
 playerWeaponScissors.addEventListener('click', () => {
     let computerChoice = getComputerChoice();
-    // if (scoreComputer || scorePlayer == 5){
-    //     return;
-    // }
+    if (scoreComputer || scorePlayer == 5){
+        return;
+    }
     score("scissors", computerChoice);
     showComputerChoice(computerChoice);
     console.log(outMessages("scissors", computerChoice));
@@ -107,9 +105,9 @@ playerWeaponScissors.addEventListener('click', () => {
 });
 playerWeaponPaper.addEventListener('click', () => {
     let computerChoice = getComputerChoice();
-    // if (scoreComputer || scorePlayer == 5){
-    //     return;
-    // }
+    if (scoreComputer || scorePlayer == 5){
+        return;
+    }
     score("paper", computerChoice);
     showComputerChoice(computerChoice);
     console.log(outMessages("paper", computerChoice));
