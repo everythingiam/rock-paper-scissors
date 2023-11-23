@@ -1,0 +1,93 @@
+body{
+    background-image: url(assets/texture2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+}
+section{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+/* .my-colored-field, .enemy-colored-field{
+    position: absolute;
+    display: none;
+} */
+.container{
+    position: relative;
+}
+button{
+    background-color: transparent;
+    border: none;
+    background-size: cover;
+    cursor: pointer;
+}
+@font-face {
+    font-family: "Beer Money";
+    src: url(assets/beer-money.ttf);
+}
+
+.choices{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.choices button {
+    color: #ECECEC;
+    text-align: center;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: "Beer Money";
+}
+.choices button:hover{
+    font-size: 70px;
+}
+.enemy-hand, .my-hand{
+    transition: 0.5s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+img{
+    max-width: 100%;
+}
+.my-hand{
+    transform: scale(-1, 1) translateY(-50%);
+}
+
+.score{
+    color: #ECECEC;
+    text-align: center;
+    font-size: 200px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: "Beer Money";
+    position: absolute;
+}
+.scorePlayer{
+    left: 10%;
+    top: 7%;
+}
+.scoreComputer{
+    right: 10%;
+    top: 7%;
+}
+.result{
+    position: absolute;
+    color: #ECECEC;
+    font-size: calc(120px + 30 * (100vw / 1280));;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: "Beer Money";
+    bottom: 12%;
+    right: 50%;
+    transform: translateX(50%);
+}
