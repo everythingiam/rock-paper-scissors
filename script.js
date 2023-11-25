@@ -16,6 +16,51 @@ const buttons = document.querySelectorAll('button');
 
 const timeout = 1500;
 
+const imagePaths = [
+    'assets/my-rock.png',
+    'assets/my-paper.png',
+    'assets/my-scissors.png',
+
+    'assets/enemy-rock.png',
+    'assets/enemy-paper.png',
+    'assets/enemy-scissors.png',
+
+    'assets/draw-my-rock.png',
+    'assets/win-my-rock.png',
+    'assets/lose-my-rock.png',
+
+    'assets/draw-my-paper.png',
+    'assets/win-my-paper.png',
+    'assets/lose-my-paper.png',
+
+    'assets/draw-my-scissors.png',
+    'assets/win-my-scissors.png',
+    'assets/lose-my-scissors.png',
+
+    
+    'assets/draw-enemy-rock.png',
+    'assets/win-enemy-rock.png',
+    'assets/lose-enemy-rock.png',
+
+    'assets/draw-enemy-paper.png',
+    'assets/win-enemy-paper.png',
+    'assets/lose-enemy-paper.png',
+
+    'assets/draw-enemy-scissors.png',
+    'assets/win-enemy-scissors.png',
+    'assets/lose-enemy-scissors.png',
+];
+
+const preloadImages = () => {
+    imagePaths.forEach((path) => {
+        const img = new Image();
+        img.src = path;
+    });
+};
+
+preloadImages();
+
+
 function getComputerChoice(){ //Random number [1, 3] for computer selection.
     let choice = Math.floor(Math.random() * 3 + 1); 
     if (choice === 1){
